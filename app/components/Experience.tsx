@@ -1,3 +1,7 @@
+"use client";
+
+import { motion } from "framer-motion";
+
 export default function Experience() {
   const experiences = [
     {
@@ -32,42 +36,124 @@ export default function Experience() {
 
   return (
     <section id="experience" className="py-20 bg-gray-50 relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute top-0 right-0 w-64 h-64 bg-blue-200 rounded-full blur-3xl opacity-20"></div>
-      <div className="absolute bottom-0 left-0 w-64 h-64 bg-purple-200 rounded-full blur-3xl opacity-20"></div>
+      {/* Animated Background Elements */}
+      <motion.div 
+        className="absolute top-0 right-0 w-64 h-64 bg-blue-200 rounded-full blur-3xl opacity-20"
+        initial={{ scale: 0.8, opacity: 0 }}
+        whileInView={{ scale: 1, opacity: 0.2 }}
+        transition={{ duration: 1 }}
+        viewport={{ once: true }}
+      />
+      <motion.div 
+        className="absolute bottom-0 left-0 w-64 h-64 bg-purple-200 rounded-full blur-3xl opacity-20"
+        initial={{ scale: 0.8, opacity: 0 }}
+        whileInView={{ scale: 1, opacity: 0.2 }}
+        transition={{ duration: 1, delay: 0.2 }}
+        viewport={{ once: true }}
+      />
       
       <div className="relative max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        {/* Animated Header */}
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          <motion.h2 
+            className="text-4xl md:text-5xl font-bold text-gray-900 mb-4"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             Work <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Experience</span>
-          </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          </motion.h2>
+          <motion.p 
+            className="text-xl text-gray-600 max-w-2xl mx-auto"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
             4+ years of delivering scalable data solutions and financial compliance systems
-          </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full mt-4"></div>
-        </div>
+          </motion.p>
+          <motion.div 
+            className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full mt-4"
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+          />
+        </motion.div>
 
+        {/* Timeline Container */}
         <div className="relative">
-          {/* Timeline Line */}
-        
-          <div className="space-y-12">
+          {/* Vertical Timeline Line */}
+       
+          <motion.div 
+            className="space-y-12"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+          >
             {experiences.map((exp, index) => (
-              <div key={index} className={`flex flex-col md:flex-row ${index % 2 === 0 ? 'md:flex-row-reverse' : ''} items-start gap-8`}>
-                {/* Timeline Dot */}
-                <div className="flex items-center justify-center w-16 h-16 bg-white border-4 border-blue-500 rounded-full shadow-lg z-10 mx-auto md:mx-0">
-                  <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                </div>
+              <motion.div
+                key={index}
+                className={`flex flex-col md:flex-row ${
+                  index % 2 === 0 ? 'md:flex-row-reverse' : ''
+                } items-start gap-8`}
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: (i = index) => ({
+                    opacity: 1,
+                    transition: {
+                      delay: i * 0.3,
+                      duration: 0.8,
+                    },
+                  }),
+                }}
+              >
+                {/* Animated Timeline Dot */}
+                <motion.div 
+                  className="flex items-center justify-center w-16 h-16 bg-white border-4 border-blue-500 rounded-full shadow-lg z-10 mx-auto md:mx-0 relative"
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ type: "spring", stiffness: 400 }}
+                >
+                  <motion.div 
+                    className="w-3 h-3 bg-blue-500 rounded-full"
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    transition={{ delay: index * 0.3 + 0.2, type: "spring" }}
+                  />
+                </motion.div>
 
-                {/* Experience Card */}
-                <div className={`flex-1 ${index % 2 === 0 ? 'md:pr-8' : 'md:pl-8'}`}>
-                  <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 group">
-                    {/* Header */}
-                    <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6">
+                {/* Animated Experience Card */}
+                <motion.div
+                  className={`flex-1 ${index % 2 === 0 ? 'md:pr-8' : 'md:pl-8'}`}
+                  initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8, delay: index * 0.3 }}
+                  viewport={{ once: true }}
+                  whileHover={{ scale: 1.02, y: -5 }}
+                >
+                  <motion.div 
+                    className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 group"
+                    whileHover={{ boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)" }}
+                  >
+                    {/* Animated Header */}
+                    <motion.div 
+                      className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6"
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.3 + 0.1 }}
+                    >
                       <div className="flex-1">
                         <div className="flex items-center space-x-3 mb-2">
-                          <h3 className="text-2xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
+                          <motion.h3 
+                            className="text-2xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors"
+                            whileHover={{ scale: 1.02 }}
+                          >
                             {exp.title}
-                          </h3>
+                          </motion.h3>
                           <span className="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full font-medium">
                             {exp.type}
                           </span>
@@ -88,15 +174,23 @@ export default function Experience() {
                           </div>
                         </div>
                       </div>
-                      <div className="mt-4 lg:mt-0 lg:text-right">
-                        <span className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
-                          {exp.period}
-                        </span>
-                      </div>
-                    </div>
+                      <motion.span 
+                        className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-full text-sm font-semibold mt-4 lg:mt-0"
+                        initial={{ scale: 0 }}
+                        whileInView={{ scale: 1 }}
+                        transition={{ delay: index * 0.3 + 0.3, type: "spring" }}
+                      >
+                        {exp.period}
+                      </motion.span>
+                    </motion.div>
 
-                    {/* Achievements */}
-                    <div className="mb-6">
+                    {/* Animated Achievements */}
+                    <motion.div 
+                      className="mb-6"
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      transition={{ delay: index * 0.3 + 0.4 }}
+                    >
                       <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
                         <svg className="w-5 h-5 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -105,38 +199,61 @@ export default function Experience() {
                       </h4>
                       <ul className="space-y-3">
                         {exp.achievements.map((achievement, achievementIndex) => (
-                          <li key={achievementIndex} className="flex items-start">
-                            <span className="text-blue-500 mr-3 mt-1 flex-shrink-0">•</span>
+                          <motion.li 
+                            key={achievementIndex}
+                            className="flex items-start"
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ delay: index * 0.3 + 0.5 + achievementIndex * 0.1 }}
+                          >
+                            <motion.span 
+                              className="text-blue-500 mr-3 mt-1 flex-shrink-0"
+                              animate={{ scale: [1, 1.2, 1] }}
+                              transition={{ repeat: Infinity, duration: 2, delay: index * 0.3 + 0.6 + achievementIndex * 0.1 }}
+                            >
+                              •
+                            </motion.span>
                             <span className="text-gray-700 leading-relaxed">{achievement}</span>
-                          </li>
+                          </motion.li>
                         ))}
                       </ul>
-                    </div>
+                    </motion.div>
 
-                    {/* Technologies */}
-                    <div>
+                    {/* Animated Technologies */}
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      transition={{ delay: index * 0.3 + 0.6 }}
+                    >
                       <h4 className="text-lg font-semibold text-gray-900 mb-3 flex items-center">
                         <svg className="w-5 h-5 mr-2 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                         </svg>
                         Technologies Used
                       </h4>
-                      <div className="flex flex-wrap gap-2">
+                      <motion.div 
+                        className="flex flex-wrap gap-2"
+                        initial={{ scale: 0.9 }}
+                        whileInView={{ scale: 1 }}
+                        transition={{ delay: index * 0.3 + 0.7 }}
+                      >
                         {exp.technologies.map((tech, techIndex) => (
-                          <span
+                          <motion.span
                             key={techIndex}
-                            className="bg-gradient-to-r from-blue-50 to-purple-50 text-blue-700 px-3 py-1 rounded-lg text-sm font-medium border border-blue-100"
+                            className="bg-gradient-to-r from-blue-50 to-purple-50 text-blue-700 px-3 py-1 rounded-lg text-sm font-medium border border-blue-100 inline-block"
+                            whileHover={{ scale: 1.05, y: -2 }}
+                            transition={{ type: "spring", stiffness: 400 }}
                           >
                             {tech}
-                          </span>
+                          </motion.span>
                         ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                      </motion.div>
+                    </motion.div>
+                  </motion.div>
+                </motion.div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

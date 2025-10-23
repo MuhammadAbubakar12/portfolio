@@ -1,4 +1,7 @@
-﻿export default function About() {
+﻿"use client";
+import { motion } from "framer-motion";
+
+export default function About() {
   const skillCategories = [
     {
       title: 'Cloud & Big Data',
@@ -24,59 +27,122 @@
 
   return (
     <section id="about" className="py-20 bg-white relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px, rgba(59,130,246,0.05)_1px,transparent_0)] bg-[length:40px_40px]"></div>
+      {/* Animated Background Pattern */}
+      <motion.div 
+        className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px, rgba(59,130,246,0.05)_1px,transparent_0)] bg-[length:40px_40px]"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.2, duration: 1 }}
+      />
       
       <div className="relative max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        {/* Animated Header */}
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <motion.h2 
+            className="text-4xl md:text-5xl font-bold text-gray-900 mb-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.1, duration: 0.6 }}
+          >
             About <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Me</span>
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full"></div>
-        </div>
+          </motion.h2>
+          <motion.div 
+            className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full"
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+          />
+        </motion.div>
         
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
-          {/* Professional Summary */}
-          <div className="space-y-6">
-            <div className="bg-gradient-to-br from-blue-50 to-purple-50 p-8 rounded-2xl border border-blue-100">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          {/* Professional Summary - Animated */}
+          <motion.div 
+            className="space-y-6"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            <motion.div 
+              className="bg-gradient-to-br from-blue-50 to-purple-50 p-8 rounded-2xl border border-blue-100"
+              whileHover={{ y: -5 }}
+              transition={{ duration: 0.3 }}
+            >
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Professional Summary</h3>
-              <p className="text-lg text-gray-700 mb-4 leading-relaxed">
-                <span className="font-semibold text-blue-600">Senior Data Engineer</span> with <span className="font-semibold">4+ years</span> of experience 
-                specializing in building <span className="font-semibold">scalable cloud-based data pipelines</span>, 
-                <span className="font-semibold"> ETL/ELT workflows</span>, and <span className="font-semibold">data warehouses</span> on AWS.
-              </p>
-              <p className="text-lg text-gray-700 mb-4 leading-relaxed">
-                Expert in <span className="font-semibold text-purple-600">financial compliance systems</span> including 
-                Oracle FCCM, TBAML, and AML frameworks. Proven ability to optimize data infrastructure, 
-                enforce governance, and collaborate with cross-functional teams.
-              </p>
-              <p className="text-lg text-gray-700 leading-relaxed">
-                Passionate about leveraging <span className="font-semibold text-cyan-600">big data technologies</span> 
-                and cloud platforms to solve complex business problems in the financial sector.
-              </p>
-            </div>
+              <motion.p 
+                className="text-lg text-gray-700 mb-4 leading-relaxed"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.5 }}
+              >
+                <span className="font-semibold text-blue-600">Accomplished Data Engineer</span> with <span className="font-semibold">4+ years</span> of expertise in 
+                designing, deploying, and optimizing <span className="font-semibold">scalable cloud data solutions</span> for 
+                <span className="font-semibold"> financial compliance</span> and <span className="font-semibold">big data analytics</span>.
+              </motion.p>
+              <motion.p 
+                className="text-lg text-gray-700 mb-4 leading-relaxed"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.6 }}
+              >
+                Proven ability to architect <span className="font-semibold text-purple-600">end-to-end data pipelines</span> 
+                leveraging AWS, PySpark, and Delta Lake, resulting in <span className="font-semibold">25% cost reduction</span> 
+                and <span className="font-semibold">40% performance improvement</span> in production systems.
+              </motion.p>
+              <motion.p 
+                className="text-lg text-gray-700 leading-relaxed"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.7 }}
+              >
+                Adept at implementing <span className="font-semibold text-cyan-600">regulatory compliance frameworks</span> 
+                including Oracle FCCM and TBAML, ensuring adherence to financial regulations while managing 
+                <span className="font-semibold"> petabyte-scale datasets</span>.
+              </motion.p>
+            </motion.div>
 
-            {/* Education */}
-            <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+            {/* Education - Animated */}
+            <motion.div 
+              className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.8 }}
+            >
               <h4 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
                 <span className="mr-2">🎓</span> Education
               </h4>
               <div className="space-y-3">
-                <div>
+                <motion.div 
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.9 }}
+                >
                   <h5 className="font-semibold text-gray-900">Bachelor of Science in Computer Science (BSCS)</h5>
                   <p className="text-blue-600 font-medium">National University of Sciences and Technology (NUST)</p>
                   <p className="text-gray-600">2017 – 2021 | Islamabad, Pakistan</p>
-                </div>
+                </motion.div>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
-          {/* Skills Grid */}
-          <div className="grid md:grid-cols-2 gap-6">
+          {/* Skills Grid - Animated */}
+          <motion.div 
+            className="grid md:grid-cols-2 gap-6"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
             {skillCategories.map((category, index) => (
-              <div 
+              <motion.div 
                 key={index}
                 className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow group"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 + index * 0.15, duration: 0.6 }}
               >
                 <div className="flex items-center mb-4">
                   <span className="text-2xl mr-3">{category.icon}</span>
@@ -84,17 +150,21 @@
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {category.skills.map((skill, skillIndex) => (
-                    <span
+                    <motion.span
                       key={skillIndex}
                       className="bg-gradient-to-r from-blue-50 to-purple-50 text-blue-700 px-3 py-2 rounded-lg text-sm font-medium border border-blue-100 group-hover:border-blue-200 transition-colors"
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.6 + index * 0.15 + skillIndex * 0.05, duration: 0.4 }}
+                      whileHover={{ y: -3, scale: 1.05 }}
                     >
                       {skill}
-                    </span>
+                    </motion.span>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
