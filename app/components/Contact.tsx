@@ -81,8 +81,8 @@ export default function Contact() {
         </svg>
       ),
       label: 'LinkedIn',
-      value: 'muhammadabubakar12',
-      href: 'https://linkedin.com/in/muhammadabubakar12'
+      value: 'dataengineerabubakar',
+      href: 'https://linkedin.com/in/dataengineerabubakar'
     }
   ];
 

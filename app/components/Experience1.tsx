@@ -5,35 +5,19 @@ import { motion } from "framer-motion";
 export default function Experience() {
   const experiences = [
     {
-      title: 'Senior Software Engineer – Data Engineering',
-      company: 'Optrix Technologies',
-      location: 'Lahore, Pakistan',
-      period: 'May 2025 – Present',
-      type: 'Full-time',
-      achievements: [
-        'Architected and deployed scalable ETL pipelines using AWS S3, Databricks, and PySpark, achieving 25% cost reduction through Delta Lake optimization.',
-        'Built and maintained a multi-layered AWS data warehouse integrating PostgreSQL and DynamoDB for unified analytics and real-time reporting.',
-        'Automated ingestion, transformation, and workflow orchestration using Shell scripting and Stonebranch, improving efficiency by 30%.',
-        'Implemented data quality checks, error handling, and lineage documentation to enhance reliability and compliance.',
-        'Collaborated with analytics and business teams to deliver KPI dashboards and predictive insights for enterprise clients.'
-      ],
-      technologies: ['AWS S3', 'Databricks', 'PySpark', 'Delta Lake', 'PostgreSQL', 'DynamoDB', 'Stonebranch', 'Shell Scripting']
-    },
-    {
       title: 'Senior Data Engineer',
       company: 'Techlogix',
       location: 'Lahore, Pakistan',
-      period: 'Dec 2021 – May 2025',
+      period: 'Dec 2021 – Present',
       type: 'Full-time',
       achievements: [
-        'Developed and managed petabyte-scale data pipelines using AWS EMR, Glue, and Athena, improving throughput by 40%.',
-        'Implemented Medallion Architecture (Bronze–Silver–Gold) using Delta Lake, enabling self-service analytics and data layering.',
-        'Automated 30+ workflows via AWS Step Functions, Lambda, and Stonebranch, increasing SLA compliance by 40%.',
+        'Designed and deployed scalable ETL pipelines using AWS S3, Databricks, and PySpark, reducing Databricks costs by 25% through Delta Lake optimizations',
+        'Architected data warehousing solutions on AWS, integrating structured (PostgreSQL) and unstructured (DynamoDB) data sources for analytics',
+        'Automated complex workflows using shell scripting and Stonebranch, improving operational efficiency by 30%',
         'Managed petabyte-scale healthcare data for Blue Cross Blue Shield (BCBS), ensuring compliance with AWS security best practices',
-        'Ensured data security and compliance (HIPAA, AML, KYC) through IAM policies, KMS encryption, and audit-ready frameworks.',
-        'Collaborated with compliance teams to implement TBAML/KYC frameworks leveraging ODI 12c and SQL Server.'
+        'Collaborated with compliance teams to implement TBAML/KYC frameworks, leveraging ODI 12c and SQL Server'
       ],
-      technologies: ['AWS EMR', 'Glue', 'Athena', 'PySpark', 'Databricks', 'Delta Lake', 'PostgreSQL', 'Stonebranch', 'ODI 12c']
+      technologies: ['AWS EMR', 'PySpark', 'Databricks', 'Delta Lake', 'PostgreSQL', 'DynamoDB', 'Shell Scripting', 'Stonebranch']
     },
     {
       title: 'Software Engineer',
@@ -42,9 +26,9 @@ export default function Experience() {
       period: 'Oct 2020 – Nov 2021',
       type: 'Full-time',
       achievements: [
-        'Developed RESTful APIs using Node.js and MongoDB, enabling real-time data access for global clients.',
-        'Optimized MySQL databases for scalability and performance across production workloads.',
-        'Collaborated on full-stack web development and data integration projects for international customers.'
+        'Developed RESTful APIs using Node.js and MongoDB, enabling real-time data access for international clients',
+        'Optimized MySQL databases for performance and scalability',
+        'Contributed to web development projects and technical support for international clients'
       ],
       technologies: ['Node.js', 'MongoDB', 'MySQL', 'REST APIs', 'JavaScript']
     }
@@ -91,7 +75,7 @@ export default function Experience() {
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            4+ years of delivering scalable cloud data solutions and enterprise data pipelines
+            4+ years of delivering scalable data solutions and financial compliance systems
           </motion.p>
           <motion.div 
             className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full mt-4"
@@ -103,6 +87,8 @@ export default function Experience() {
 
         {/* Timeline Container */}
         <div className="relative">
+          {/* Vertical Timeline Line */}
+       
           <motion.div 
             className="space-y-12"
             initial="hidden"
@@ -119,7 +105,10 @@ export default function Experience() {
                   hidden: { opacity: 0 },
                   visible: (i = index) => ({
                     opacity: 1,
-                    transition: { delay: i * 0.3, duration: 0.8 },
+                    transition: {
+                      delay: i * 0.3,
+                      duration: 0.8,
+                    },
                   }),
                 }}
               >
@@ -150,6 +139,7 @@ export default function Experience() {
                     className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 group"
                     whileHover={{ boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)" }}
                   >
+                    {/* Animated Header */}
                     <motion.div 
                       className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6"
                       initial={{ opacity: 0, y: 20 }}
@@ -170,9 +160,16 @@ export default function Experience() {
                         </div>
                         <div className="flex items-center space-x-4 text-gray-600">
                           <div className="flex items-center space-x-1">
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                            </svg>
                             <span className="font-semibold text-gray-900">{exp.company}</span>
                           </div>
                           <div className="flex items-center space-x-1">
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
                             <span>{exp.location}</span>
                           </div>
                         </div>
@@ -187,40 +184,70 @@ export default function Experience() {
                       </motion.span>
                     </motion.div>
 
-                    {/* Achievements */}
+                    {/* Animated Achievements */}
                     <motion.div 
                       className="mb-6"
                       initial={{ opacity: 0 }}
                       whileInView={{ opacity: 1 }}
                       transition={{ delay: index * 0.3 + 0.4 }}
                     >
-                      <h4 className="text-lg font-semibold text-gray-900 mb-4">Key Achievements</h4>
+                      <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                        <svg className="w-5 h-5 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        Key Achievements
+                      </h4>
                       <ul className="space-y-3">
-                        {exp.achievements.map((achievement, i) => (
-                          <li key={i} className="text-gray-700 leading-relaxed">
-                            • {achievement}
-                          </li>
+                        {exp.achievements.map((achievement, achievementIndex) => (
+                          <motion.li 
+                            key={achievementIndex}
+                            className="flex items-start"
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ delay: index * 0.3 + 0.5 + achievementIndex * 0.1 }}
+                          >
+                            <motion.span 
+                              className="text-blue-500 mr-3 mt-1 flex-shrink-0"
+                              animate={{ scale: [1, 1.2, 1] }}
+                              transition={{ repeat: Infinity, duration: 2, delay: index * 0.3 + 0.6 + achievementIndex * 0.1 }}
+                            >
+                              •
+                            </motion.span>
+                            <span className="text-gray-700 leading-relaxed">{achievement}</span>
+                          </motion.li>
                         ))}
                       </ul>
                     </motion.div>
 
-                    {/* Technologies */}
+                    {/* Animated Technologies */}
                     <motion.div
                       initial={{ opacity: 0 }}
                       whileInView={{ opacity: 1 }}
                       transition={{ delay: index * 0.3 + 0.6 }}
                     >
-                      <h4 className="text-lg font-semibold text-gray-900 mb-3">Technologies Used</h4>
-                      <div className="flex flex-wrap gap-2">
+                      <h4 className="text-lg font-semibold text-gray-900 mb-3 flex items-center">
+                        <svg className="w-5 h-5 mr-2 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                        </svg>
+                        Technologies Used
+                      </h4>
+                      <motion.div 
+                        className="flex flex-wrap gap-2"
+                        initial={{ scale: 0.9 }}
+                        whileInView={{ scale: 1 }}
+                        transition={{ delay: index * 0.3 + 0.7 }}
+                      >
                         {exp.technologies.map((tech, techIndex) => (
-                          <span
+                          <motion.span
                             key={techIndex}
                             className="bg-gradient-to-r from-blue-50 to-purple-50 text-blue-700 px-3 py-1 rounded-lg text-sm font-medium border border-blue-100 inline-block"
+                            whileHover={{ scale: 1.05, y: -2 }}
+                            transition={{ type: "spring", stiffness: 400 }}
                           >
                             {tech}
-                          </span>
+                          </motion.span>
                         ))}
-                      </div>
+                      </motion.div>
                     </motion.div>
                   </motion.div>
                 </motion.div>
