@@ -351,7 +351,7 @@ export default function Header() {
                 
                 {/* Download CV in Mobile Menu */}
                 <motion.a
-                  href="/Muhammad_Abubakar_CV.pdf"
+                  href="/cv/Muhammad-Abubakar-CV.pdf"
                   download
                   className="group flex items-center space-x-3 text-2xl sm:text-3xl font-semibold text-white hover:text-cyan-200 transition-all"
                   initial={{ opacity: 0, x: -50 }}
